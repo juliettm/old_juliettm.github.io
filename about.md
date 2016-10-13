@@ -1,10 +1,9 @@
 ---
-layout: page
+layout: no_side_page
 title: About
 permalink: /about/
 ---
-<!-- ![webjeda logo]({{site.baseurl}}/images/webjeda.svg) -->
 
-<!-- <div class="mt50"></div> -->
+ <div class="mt50"></div> 
 
 To share... 
