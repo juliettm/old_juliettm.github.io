@@ -6,12 +6,12 @@
 </description>
     <link>http://localhost:4000/juliettm.github.io/</link>
     <atom:link href="http://localhost:4000/juliettm.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Nov 2016 18:49:36 +0100</pubDate>
-    <lastBuildDate>Sat, 05 Nov 2016 18:49:36 +0100</lastBuildDate>
+    <pubDate>Mon, 07 Nov 2016 13:18:17 +0100</pubDate>
+    <lastBuildDate>Mon, 07 Nov 2016 13:18:17 +0100</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
-        <title>Cohort analysis with Python</title>
+        <title>Python cohort analysis</title>
         <description>&lt;p&gt;A cohort is a group of subjects who share a common characteristic over a certain period of time.&lt;/p&gt;
 
 &lt;p&gt;Cohort analysis allows keep on track some aspects of interest in business. Cohort analisis groups people by some characteristic in common and follow the behavior of the groups in time.&lt;/p&gt;
@@ -64,8 +64,9 @@
 &lt;span class=&quot;n&quot;&gt;sns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heatmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retention&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;annot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'.0&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;p&gt;The figure shows the result, the color scale shows how is decreasing the use of the app after the download day. The company could take actions, based on the data, to improve the engagement with the app.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/juliettm.github.io/images/cohort.png&quot; alt=&quot;Cohort: User retention&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/juliettm.github.io/images/cohort/cohort.png&quot; alt=&quot;Cohort: User retention&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The ipython notebook with this code is available in the &lt;a href=&quot;https://github.com/juliettm/pyCohort&quot;&gt;pyCohort&lt;/a&gt; repository.&lt;/p&gt;
 

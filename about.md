@@ -6,4 +6,4 @@ permalink: /about/
 
  <div class="mt50"></div> 
 
-To share... 
+This is an space to share useful tips, tool and tricks to make data analysis and visualization.
