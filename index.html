@@ -23,7 +23,9 @@ layout: default
 
             <div class="panel-body"><small>
               {{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}</small>
-              <a href="{{ post.url | prepend: site.baseurl }}" class="btn btn-primary btn-sm pull-right mt10">Read</a>
+              <a href="{{ post.url | prepend: site.baseurl }}" class="btn btn-primary btn-sm pull-right mt10" onclick = "read()">Read
+              </a>
+              
             </div>
 
           </div>
@@ -49,9 +51,9 @@ layout: default
             {% if page == paginator.page %}
               <li class="active"><span><em>{{ page }}</em></span></li>
             {% elsif page == 1 %}
-              <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a></li>
+              <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" onclick = "paginator()">{{ page }}</a></li>
             {% else %}
-              <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+              <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" onclick = "paginator()">{{ page }}</a></li>
             {% endif %}
           {% endfor %}
 
@@ -69,3 +71,14 @@ layout: default
   </div>
 
 </div>
+
+<script type='text/javascript'>
+  function read(){
+    console.log("printing console")
+    amplitude.getInstance().logEvent('Read');
+  }
+  function paginator(){
+    console.log("printing console")
+    amplitude.getInstance().logEvent('Paginator');
+  }
+</script>
