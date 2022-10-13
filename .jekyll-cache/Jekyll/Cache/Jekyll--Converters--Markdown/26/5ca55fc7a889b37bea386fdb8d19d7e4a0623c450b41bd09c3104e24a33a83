@@ -1,0 +1,19 @@
+I"½<p>Topic modeling is way of identifying patterns (topics) in a collection of documents.</p>
+
+<p>This is only a proof of concept to check out the performance of the LDA algorithm at MLlib based on the posts:</p>
+
+<ul>
+  <li><a href="https://databricks.com/blog/2015/03/25/topic-modeling-with-lda-mllib-meets-graphx.html">Topic modeling with LDA: MLlib meets GraphX</a></li>
+  <li><a href="https://databricks.com/blog/2015/09/22/large-scale-topic-modeling-improvements-to-lda-on-apache-spark.html">Large Scale Topic Modeling: Improvements to LDA on Apache Spark</a></li>
+</ul>
+
+<h2 id="data">Data</h2>
+
+<p>The text used to this proof was extracted from the BBC Mundo web page using <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a>, a Python library for web scrapping. The code used is available in the <a href="https://github.com/juliettm/scrapy/blob/master/bbc_scraping.ipynb">BBC scraping</a> iPython notebook.</p>
+
+<h2 id="proof-of-concept">Proof of concept</h2>
+
+<p>Iâ€™ve use the <a href="https://zeppelin.apache.org/">Apache Zeppelin</a> environment to run the experimentation. This is a very useful tool that provides built-in <a href="http://spark.apache.org/">Apache Spark</a> integration.</p>
+
+<p>All the original code can be viewed in this <a href="https://www.zeppelinhub.com/viewer/notebooks/bm90ZTovL2p1bGlldHRtL0xvY2FsLVplcC81M2Q0MTY3YWYxNjA0ZTc2YmZlM2EzOGM3ODFkZGRiNy9ub3RlLmpzb24">Zeppelin notebook</a>. Also this <a href="https://www.zeppelinhub.com/viewer/notebooks/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1bGlldHRtL1plcHBlbGluTm90ZWJvb2tzL21hc3Rlci8yQ0JXR1pCNlYvbm90ZS5qc29u">Updated notebook</a> uses the LDA version included in the MLlib DataFrame based API.</p>
+:ET

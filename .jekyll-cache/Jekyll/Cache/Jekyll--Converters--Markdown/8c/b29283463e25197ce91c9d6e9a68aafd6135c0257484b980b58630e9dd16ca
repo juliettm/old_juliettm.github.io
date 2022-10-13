@@ -1,0 +1,56 @@
+I"�<p>A cohort is a group of subjects who share a common characteristic over a certain period of time.</p>
+
+<p>Cohort analysis allows keep on track some aspects of interest in business. Cohort analisis groups people by some characteristic in common and follow the behavior of the groups in time.</p>
+
+<p>The common characteristic of the group could vary depending on the objective of the cohort analysis and the period could be any time agregation necesary to measure the value of interest. There is many alternatives to make cohort analysis, could be useful to make channel acquisition analysis, to predict lifetime value, in this case let’s visualize an user retention example.</p>
+
+<h2 id="example-user-retention">Example: User retention</h2>
+<p>There are different definitions of retention but let’s define the user retention for an app as the percentage of users who come back and perform any action in the app “N” days after they start using it.</p>
+
+<p>The cohort group will be defined by the date in which the user download the app: each group “contains” all new users that download the app each day. The cohort period will be the days after the download. The Day 1 retention will be 100% for all groups no matter how many users download the app and the subsequents days retention will be the percentage of the users who come back and perform any action in the app. This view shows how much the users are interacting with the app.</p>
+
+<h2 id="python">Python</h2>
+
+<p>A total of 13 days will be considered for the example. The cohort groups involves the users that has been downloaded the app each day and the cohort period will be the days after the download.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Number of days to track
+</span><span class="n">n</span> <span class="o">=</span> <span class="mi">13</span> 
+<span class="c1"># Dates of download (Cohort Groups)
+</span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">'20161001'</span><span class="p">,</span><span class="n">periods</span><span class="o">=</span><span class="n">n</span><span class="p">).</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'%Y-%m-%d'</span><span class="p">))</span>
+<span class="c1"># Study days (Cohort Period) 
+</span><span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Day "</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))]</span>
+</code></pre></div></div>
+
+<p>The analysis will consider the percent of the users that keep using the app each day after the download.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Generate the data for analysis
+</span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># Generate values between 1 and 1000
+</span>    <span class="n">val</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">i</span><span class="p">)</span> 
+    <span class="c1"># Sort values and reverse the order 
+</span>    <span class="n">sorted_val</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">val</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+    <span class="c1"># Divide the data by the higher value
+</span>    <span class="c1"># This is the number of users that download the app (day one)
+</span>    <span class="n">data</span> <span class="o">+=</span> <span class="p">[[</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">sorted_val</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">sorted_val</span><span class="p">]]</span>
+<span class="c1"># Create a data frame with the generated data
+</span><span class="n">retention</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">days</span><span class="p">)</span>
+<span class="n">retention</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span><span class="s">'Cohort Group'</span>
+<span class="n">retention</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'Cohort Period'</span>
+</code></pre></div></div>
+
+<p><a href="http://seaborn.pydata.org/">Seaborn</a> is a Python library which provides a <a href="http://seaborn.pydata.org/generated/seaborn.heatmap.html">heatmap</a> visualization that makes possible a beautiful cohort analysis design.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Seaborn heatmap
+</span><span class="n">sns</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">'white'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Cohorts: User Retention'</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">retention</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">'.0%'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>The figure shows the result, the color scale shows how is decreasing the use of the app after the download day. The company could take actions, based on the data, to improve the engagement with the app.</p>
+
+<p><img src="/juliettm.github.io/images/cohort/cohort.png" alt="Cohort: User retention" /></p>
+
+<p>The ipython notebook with this code is available in the <a href="https://github.com/juliettm/pyCohort">pyCohort</a> repository.</p>
+
+:ET
